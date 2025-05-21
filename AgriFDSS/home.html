@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AgriFDSS -farm details</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body.form-page {
+      background: linear-gradient(to bottom right, #eaefeb, #c8e6c9);
+      background-image: url('https://images.pexels.com/photos/708798/pexels-photo-708798.jpeg?cs=srgb&dl=pexels-chiecharon-708798.jpg&fm=jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .form-section {
+      background-color: rgba(247, 204, 151, 0.8); /* Semi-transparent background */
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #131514;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.2rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f8f9f7;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+      border-color: #4caf50;
+      outline: none;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #4caf50;
+      color: #f9f1f1;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #0f3c0f;
+    }
+
+    .submit-button:active {
+      background-color: #0e3f10;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .form-section {
+        max-width: 100%;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+  <script>
+    const translations = {
+      en: {
+        soilColor: "Soil Color:",
+        landArea: "Land Area (in acres):",
+        absorption: "Soil Water Absorption (%) (optional):",
+        waterBodies: "Nearby Water Bodies (Count):",
+        cultivation: "Annual Cultivation Frequency:",
+        fertilizers: "Fertilizers Used (optional):",
+        rainfall: "Rainfall (mm) (optional):",
+        cropImage: "Upload Crop Image (optional):",
+        leafImage: "Upload Leaf Image (optional):",
+        soilImage: "Upload Soil Image:",
+        submit: "Submit & Get Advisory",
+        chooseLanguage: "Choose Language"
+      },
+      hi: {
+        soilColor: "मिट्टी का रंग:",
+        landArea: "भूमि क्षेत्रफल (एकड़ में):",
+        absorption: "मिट्टी जल अवशोषण (%) (वैकल्पिक):",
+        waterBodies: "पास में जल निकाय (गिनती):",
+        cultivation: "वार्षिक खेती की आवृत्ति:",
+        fertilizers: "उपयोग किए गए उर्वरक (वैकल्पिक):",
+        rainfall: "वर्षा (मिमी) (वैकल्पिक):",
+        cropImage: "फसल की छवि अपलोड करें (वैकल्पिक):",
+        leafImage: "पत्ते की छवि अपलोड करें (वैकल्पिक):",
+        soilImage: "मिट्टी की छवि अपलोड करें:",
+        submit: "सबमिट करें और सलाह प्राप्त करें",
+        chooseLanguage: "भाषा चुनें"
+      },
+      mr: {
+        soilColor: "मातीचा रंग:",
+        landArea: "जमिन क्षेत्र (एकरमध्ये):",
+        absorption: "मातीचा जल शोषण (%) (पर्यायी):",
+        waterBodies: "आसपास पाणी शरीर (गणना):",
+        cultivation: "वार्षिक शेतीची वारंवारता:",
+        fertilizers: "खत वापरले (पर्यायी):",
+        rainfall: "पर्जन्यवृष्टि (मिमी) (पर्यायी):",
+        cropImage: "पिकाची छायाचित्र अपलोड करा (पर्यायी):",
+        leafImage: "पानांचे छायाचित्र अपलोड करा (पर्यायी):",
+        soilImage: "मातीचे छायाचित्र अपलोड करा:",
+        submit: "सबमिट करा आणि सल्ला मिळवा",
+        chooseLanguage: "भाषा निवडा"
+      }
+    };
+
+    function updateLanguage() {
+      const lang = document.getElementById('language').value;
+      const fields = ['soilColor', 'landArea', 'absorption', 'waterBodies', 'cultivation', 'fertilizers', 'rainfall', 'cropImage', 'leafImage', 'soilImage', 'submit', 'chooseLanguage'];
+      fields.forEach(id => {
+        document.getElementById(id + 'Label').innerText = translations[lang][id];
+      });
+    }
+  </script>
+</head>
+<body class="form-page">
+  <form class="form-section" enctype="multipart/form-data" action="advisory.html" method="GET">
+    <div class="form-group">
+      <h1 style="text-align: center; margin-bottom: 1rem;">Farm Details</h1>
+      <label id="chooseLanguageLabel">Choose Language:</label>
+      <select id="language" onchange="updateLanguage()">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+      </select>
+    </div>
+    <div class="form-group"><label id="soilColorLabel">Soil Color:</label><input type="text" id="soilColor" /></div>
+    <div class="form-group"><label id="landAreaLabel">Land Area (in acres):</label><input type="number" id="landArea" step="0.01" /></div>
+    <div class="form-group"><label id="absorptionLabel">Soil Water Absorption (%) (optional):</label><input type="number" id="absorption" step="0.01" min="0" max="100" placeholder="Enter percentage" /></div>
+    <div class="form-group"><label id="waterBodiesLabel">Nearby Water Bodies (Count):</label><input type="number" id="waterBodies" /></div>
+    <div class="form-group"><label id="cultivationLabel">Annual Cultivation Frequency:</label><input type="text" id="cultivation" /></div>
+    <div class="form-group"><label id="fertilizersLabel">Fertilizers Used (optional):</label><input type="text" id="fertilizers" /></div>
+    <div class="form-group"><label id="rainfallLabel">Rainfall (mm) (optional):</label><input type="number" id="rainfall" /></div>
+    <div class="form-group"><label id="cropImageLabel">Upload Crop Image (optional):</label><input type="file" id="cropImage" accept="image/*" /></div>
+    <div class="form-group"><label id="leafImageLabel">Upload Leaf Image (optional):</label><input type="file" id="leafImage" accept="image/*" /></div>
+    <div class="form-group"><label id="soilImageLabel">Upload Soil Image:</label><input type="file" id="soilImage" accept="image/*" /></div>
+    <button type="submit" class="submit-button" id="submitLabel">Submit & Get Advisory</button>
+  </form>
+</body>
+</html>

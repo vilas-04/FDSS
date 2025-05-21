@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgriFDSS - Transforming Agriculture</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-size: cover;
+      background-color: darkgreen;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+       /* Hero Section with Background Image */
+    .hero-section {
+      background-image: url('https://media.istockphoto.com/id/1168941078/photo/female-agronomist-with-tablet-computer-advising-corn-farmer-in-field.jpg?s=612x612&w=0&k=20&c=ilaiAMCQCvF1wDmkTdklgmlMLzEG-W87cq6asfdX0vM='); /* Add your image URL here */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: hwb(132 20% 26% / 0.892);
+      text-align: center;
+    }
+
+    .overlay {
+      background-color: rgba(33, 160, 107, 0.5);
+      padding: 25px;
+      border-radius: 15px;
+    }
+    .feature-card {
+      background-color: aquamarine;
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: scale(1.07);
+    }
+    .feature-title {
+      font-size: 1.5rem; /* Adjusted for readability */
+    }
+    @media (max-width: 768px) {
+      .feature-title {
+        font-size: 1.25rem; /* Smaller font size for smaller screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Language Selection -->
+<select id="language-select" onchange="changeLanguage()">
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+  <option value="mr">Marathi</option>
+</select>
+
+<!-- Hero Section -->
+<section class="hero-section flex flex-col justify-center items-center h-screen text-white text-center bg-black bg-opacity-50 p-4">
+  <h1 class="text-5xl font-bold mb-4" id="hero-title">Welcome to AgriFDSS</h1>
+  <p class="text-lg mb-6" id="hero-description">Transforming agriculture with AI-powered decision support for smarter farming.</p>
+  <a href="index.html" id="get-started" class="btn bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-xl transition shadow-lg">Get Started</a>
+</section>
+
+<!-- Features Section -->
+<section class="features-section bg-white bg-opacity-90 py-10">
+  <h2 class="text-3xl font-semibold text-center text-green-700 mb-8" id="features-title">Key Features of AgriFDSS</h2>
+  <div class="flex flex-wrap justify-center gap-6 px-4">
+
+    <!-- Feature 1: Crop Recommendation -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?farming,crop');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-1-title">AI-Powered Crop Recommendations</h3>
+        <p id="feature-1-description">Smart crop suggestions based on soil, climate, and region.</p>
+      </div>
+    </div>
+
+    <!-- Feature 2: Harvest Planning -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?harvest,planning');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-2-title">Harvest Optimization</h3>
+        <p id="feature-2-description">Optimize harvest timings and yields based on crop maturity data.</p>
+      </div>
+    </div>
+
+    <!-- Feature 3: Crop Yield Prediction -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?agriculture,yield');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-3-title">Yield Prediction</h3>
+        <p id="feature-3-description">Predict your yield accurately and optimize your farming strategies.</p>
+      </div>
+    </div>
+
+    <!-- Feature 4: Pest and Disease Detection -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?pests,plant');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-4-title">Pest & Disease Detection</h3>
+        <p id="feature-4-description">Get alerts and control suggestions for crop threats.</p>
+      </div>
+    </div>
+
+    <!-- Feature 5: Irrigation Optimization -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?irrigation,farm');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-5-title">Optimized Irrigation</h3>
+        <p id="feature-5-description">Manage irrigation efficiently using weather and soil data.</p>
+      </div>
+    </div>
+
+    <!-- Feature 6: Financial Planning -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?finance,farm');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-6-title">Farming Budget Advisor</h3>
+        <p id="feature-6-description">Manage your farming budget and expenses with accurate cost projections.</p>
+      </div>
+    </div>
+
+    <!-- Feature 7: Market Cost -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?market,cost');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-7-title">Market Cost Analysis</h3>
+        <p id="feature-7-description">Get real-time market prices to make better financial decisions.</p>
+      </div>
+    </div>
+
+    <!-- Feature 8: Fertilizer Recommendation -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?fertilizer,plant');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-8-title">Fertilizer Recommendations</h3>
+        <p id="feature-8-description">Get personalized fertilizer suggestions based on soil and crop type.</p>
+      </div>
+    </div>
+
+    <!-- Feature 9: Weather Prediction -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?weather,forecast');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-9-title">Weather Insights</h3>
+        <p id="feature-9-description">Get localized weather predictions for better planning.</p>
+      </div>
+    </div>
+
+    <!-- Feature 10: GMO Advisor -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?genetic,crops');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-10-title">GMO Advisor</h3>
+        <p id="feature-10-description">Get personalized crop genetic modification suggestions for better yields and resistance.</p>
+      </div>
+    </div>
+
+    <!-- Feature 11: Bio-fertilizer Formulation -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?bio-fertilizer,plant');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-11-title">Bio-Fertilizer Formulation</h3>
+        <p id="feature-11-description">Formulate bio-fertilizers using IoT sensors for sustainable and efficient farming.</p>
+      </div>
+    </div>
+
+    <!-- Feature 12: Required Soil Nutrients -->
+    <div class="feature-card w-full md:w-5/12 lg:w-1/4 bg-cover bg-center text-white shadow-xl rounded-xl p-6" style="background-image: url('https://source.unsplash.com/400x300/?soil,nutrients');">
+      <div class="overlay">
+        <h3 class="feature-title text-2xl font-bold mb-2" id="feature-12-title">Required Soil Nutrients</h3>
+        <p id="feature-12-description">Get detailed information on the essential nutrients needed for healthy soil and optimal crop growth, including Nitrogen, Phosphorus, Potassium, and micronutrients.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Translations for Language Selection
+const translations = {
+  en: {
+    heroTitle: "Welcome to AgriFDSS",
+    heroDescription: "Transforming agriculture with AI-powered decision support for smarter farming.",
+    getStarted: "Get Started",
+    featuresTitle: "Key Features of AgriFDSS",
+    feature1Title: "AI-Powered Crop Recommendations",
+    feature1Description: "Smart crop suggestions based on soil, climate, and region.",
+    feature2Title: "Harvest Optimization",
+    feature2Description: "Optimize harvest timings and yields based on crop maturity data.",
+    feature3Title: "Yield Prediction",
+    feature3Description: "Predict your yield accurately and optimize your farming strategies.",
+    feature4Title: "Pest & Disease Detection",
+    feature4Description: "Get alerts and control suggestions for crop threats.",
+    feature5Title: "Optimized Irrigation",
+    feature5Description: "Manage irrigation efficiently using weather and soil data.",
+    feature6Title: "Farming Budget Advisor",
+    feature6Description: "Manage your farming budget and expenses with accurate cost projections.",
+    feature7Title: "Market Cost Analysis",
+    feature7Description: "Get real-time market prices to make better financial decisions.",
+    feature8Title: "Fertilizer Recommendations",
+    feature8Description: "Get personalized fertilizer suggestions based on soil and crop type.",
+    feature9Title: "Weather Insights",
+    feature9Description: "Get localized weather predictions for better planning.",
+    feature10Title: "GMO Advisor",
+    feature10Description: "Get personalized crop genetic modification suggestions for better yields and resistance.",
+    feature11Title: "Bio-Fertilizer Formulation",
+    feature11Description: "Formulate bio-fertilizers using IoT sensors for sustainable and efficient farming.",
+    feature12Title: "Required Soil Nutrients",
+    feature12Description: "Get detailed information on the essential nutrients needed for healthy soil and optimal crop growth, including Nitrogen, Phosphorus, Potassium, and micronutrients."
+  },
+  hi: {
+    heroTitle: "AgriFDSS में आपका स्वागत है",
+    heroDescription: "AI-समर्थित निर्णय समर्थन के साथ कृषि को स्मार्ट बनाना।",
+    getStarted: "शुरू करें",
+    featuresTitle: "AgriFDSS की प्रमुख विशेषताएँ",
+    feature1Title: "AI-संचालित फसल सिफारिशें",
+    feature1Description: "मिट्टी, जलवायु, और क्षेत्र के आधार पर स्मार्ट फसल सुझाव।",
+    feature2Title: "फसल कटाई अनुकूलन",
+    feature2Description: "फसल की परिपक्वता डेटा के आधार पर कटाई के समय और उपज को अनुकूलित करें।",
+    feature3Title: "उपज भविष्यवाणी",
+    feature3Description: "अपनी उपज का सटीक पूर्वानुमान करें और अपनी खेती की रणनीतियों को अनुकूलित करें।",
+    feature4Title: "कीट और रोग पहचान",
+    feature4Description: "फसल के खतरों के लिए अलर्ट और नियंत्रण सुझाव प्राप्त करें।",
+    feature5Title: "सिंचाई अनुकूलन",
+    feature5Description: "मौसम और मिट्टी के डेटा का उपयोग करके सिंचाई को कुशलता से प्रबंधित करें।",
+    feature6Title: "कृषि बजट सलाहकार",
+    feature6Description: "सटीक लागत अनुमानों के साथ अपने कृषि बजट और खर्चों का प्रबंधन करें।",
+    feature7Title: "बाजार लागत विश्लेषण",
+    feature7Description: "बेहतर वित्तीय निर्णय लेने के लिए वास्तविक समय के बाजार मूल्य प्राप्त करें।",
+    feature8Title: "उर्वरक सिफारिशें",
+    feature8Description: "मिट्टी और फसल के प्रकार के आधार पर व्यक्तिगत उर्वरक सुझाव प्राप्त करें।",
+    feature9Title: "मौसम अंतर्दृष्टि",
+    feature9Description: "बेहतर योजना बनाने के लिए स्थानीय मौसम पूर्वानुमान प्राप्त करें।",
+    feature10Title: "GMO सलाहकार",
+    feature10Description: "बेहतर उपज और प्रतिरोध के लिए व्यक्तिगत फसल आनुवंशिक संशोधन सुझाव प्राप्त करें।",
+    feature11Title: "बायो-उर्वरक निर्माण",
+    feature11Description: "सतत और प्रभावी खेती के लिए IoT सेंसर का उपयोग करके बायो-उर्वरक तैयार करें।",
+    feature12Title: "आवश्यक मृदा पोषक तत्व",
+    feature12Description: "स्वस्थ मृदा और उर्वर फसल के लिए आवश्यक पोषक तत्वों की जानकारी प्राप्त करें, जिसमें नाइट्रोजन, फास्फोरस, पोटेशियम और सूक्ष्म पोषक तत्व शामिल हैं।"
+  },
+  mr: {
+    heroTitle: "AgriFDSS मध्ये आपले स्वागत आहे",
+    heroDescription: "AI-आधारित निर्णय समर्थनासह कृषीला स्मार्ट बनवणे.",
+    getStarted: "सुरु करा",
+    featuresTitle: "AgriFDSS चे प्रमुख वैशिष्ट्ये",
+    feature1Title: "AI-संचालित पीक शिफारसी",
+    feature1Description: "माती, हवामान, आणि क्षेत्रावर आधारित स्मार्ट पीक शिफारसी.",
+    feature2Title: "पीक कापणीचे अनुकूलन",
+    feature2Description: "पीकाची प्रौढता डेटा आधारित कापणीचे वेळ आणि उत्पादन अनुकूल करा.",
+    feature3Title: "उत्पादनाचा अंदाज",
+    feature3Description: "तुमच्या उत्पादनाचा सुसंगत अंदाज घ्या आणि तुमच्या कृषी धोरणांचे अनुकूलन करा.",
+    feature4Title: "कीटक आणि रोग ओळख",
+    feature4Description: "पीक धोके ओळखण्यासाठी आणि नियंत्रण सूचना प्राप्त करा.",
+    feature5Title: "सिंचन अनुकूलन",
+    feature5Description: "हवामान आणि मातीच्या डेटावरून सिंचनाचा कार्यक्षमतेने व्यवस्थापन करा.",
+    feature6Title: "कृषी बजेट सल्लागार",
+    feature6Description: "सुसंगत खर्च अंदाजांसह तुमच्या कृषी बजेट आणि खर्चाचे व्यवस्थापन करा.",
+    feature7Title: "बाजार किमतीचे विश्लेषण",
+    feature7Description: "उत्तम वित्तीय निर्णय घेण्यासाठी वास्तविक वेळेत बाजार किंमती मिळवा.",
+    feature8Title: "उत्प्रेरक शिफारसी",
+    feature8Description: "माती आणि पीक प्रकारावर आधारित वैयक्तिक उर्वरक शिफारसी मिळवा.",
+    feature9Title: "हवामान अंदाज",
+    feature9Description: "चांगल्या नियोजनासाठी स्थानिक हवामान अंदाज प्राप्त करा.",
+    feature10Title: "GMO सल्लागार",
+    feature10Description: "उत्तम उत्पादन आणि प्रतिकारासाठी वैयक्तिक पीक आनुवंशिक सुधारणा शिफारसी मिळवा.",
+    feature11Title: "बायो-उर्वरक निर्मिती",
+    feature11Description: "IoT सेंसर वापरून शाश्वत आणि प्रभावी कृषी करण्यासाठी बायो-उर्वरक तयार करा.",
+    feature12Title: "आवश्यक माती पोषणतत्त्व",
+    feature12Description: "स्वस्थ माती आणि सर्वोत्तम पीक वाढीसाठी आवश्यक असलेल्या पोषणतत्त्वांची माहिती मिळवा, ज्यात नायट्रोजन, फॉस्फोरस, पोटॅशियम आणि सूक्ष्म पोषणतत्त्वांचा समावेश आहे."
+  }
+};
+
+// Language Change Function
+function changeLanguage() {
+  const language = document.getElementById("language-select").value;
+  document.getElementById("hero-title").innerText = translations[language].heroTitle;
+  document.getElementById("hero-description").innerText = translations[language].heroDescription;
+  document.getElementById("get-started").innerText = translations[language].getStarted;
+  document.getElementById("features-title").innerText = translations[language].featuresTitle;
+
+  // Update Features
+  document.getElementById("feature-1-title").innerText = translations[language].feature1Title;
+  document.getElementById("feature-1-description").innerText = translations[language].feature1Description;
+  document.getElementById("feature-2-title").innerText = translations[language].feature2Title;
+  document.getElementById("feature-2-description").innerText = translations[language].feature2Description;
+  document.getElementById("feature-3-title").innerText = translations[language].feature3Title;
+  document.getElementById("feature-3-description").innerText = translations[language].feature3Description;
+  document.getElementById("feature-4-title").innerText = translations[language].feature4Title;
+  document.getElementById("feature-4-description").innerText = translations[language].feature4Description;
+  document.getElementById("feature-5-title").innerText = translations[language].feature5Title;
+  document.getElementById("feature-5-description").innerText = translations[language].feature5Description;
+  document.getElementById("feature-6-title").innerText
+

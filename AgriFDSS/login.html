@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AgriFDSS - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+  <div class="container">
+    <h1 id="title">AgriFDSS - Login</h1>
+
+    <!-- Language Selector -->
+    <label for="language" id="label-language">Choose Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
+
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" id="submit-btn">Login</button>
+    </form>
+  </div>
+
+  <script>
+    // Get selected language from URL or localStorage
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("language") || localStorage.getItem("lang") || "en";
+    document.getElementById("language").value = lang;
+    localStorage.setItem("lang", lang);
+
+    const translations = {
+      en: {
+        title: "AgriFDSS - Login",
+        email: "Email",
+        password: "Password",
+        submit: "Login",
+        language: "Choose Language:"
+      },
+      hi: {
+        title: "AgriFDSS - लॉगिन करें",
+        email: "ईमेल",
+        password: "पासवर्ड",
+        submit: "लॉगिन करें",
+        language: "भाषा चुनें:"
+      },
+      mr: {
+        title: "AgriFDSS - लॉगिन करा",
+        email: "ईमेल",
+        password: "पासवर्ड",
+        submit: "लॉगिन करा",
+        language: "भाषा निवडा:"
+      }
+    };
+
+    function translate(lang) {
+      const t = translations[lang];
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("email").placeholder = t.email;
+      document.getElementById("password").placeholder = t.password;
+      document.getElementById("submit-btn").innerText = t.submit;
+      document.getElementById("label-language").innerText = t.language;
+    }
+
+    // Translate on load
+    translate(lang);
+
+    // Change language on select
+    document.getElementById("language").addEventListener("change", function () {
+      const newLang = this.value;
+      localStorage.setItem("lang", newLang);
+      translate(newLang);
+    });
+
+    // Append language when submitting the form
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const selectedLang = document.getElementById("language").value;
+      window.location.href = `home.html?language=${selectedLang}`;
+    });
+  </script>
+</body>
+</html>

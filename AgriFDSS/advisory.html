@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriFDSS Advisory Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body.advisor-page {
+      background-color: #116125;
+      background-image: url('https://wallpaperbat.com/img/338889-farmer-wallpaper-top-free-farmer-background.jpg');
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+    .advisor-page h1 {
+      color: #46e331;
+      margin-bottom: 2rem;
+    }
+    .advisor-page p {
+      color: #16e048;
+    }
+    .advisor-page .card {
+      background-color: #0fb828;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      transition: box-shadow 0.3s ease;
+    }
+    .advisor-page .card:hover {
+      box-shadow: 0 6px 8px rgba(74, 126, 84, 0.15);
+    
+    }
+   
+  </style>
+</head>
+<body class="advisor-page bg-gray-100 min-h-screen p-6">
+
+  <h1 id="title" class="text-4xl font-bold text-center mb-8 text-green-700">🌾 AgriFDSS - Smart Farming Advisory Panel</h1>
+  <p class="text-center text-gray-600 mb-10" id="subtitle">AI-driven recommendations based on soil, weather, and field data</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Crop Recommendation -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="crop" class="text-xl font-semibold text-green-600 mb-2">🌱 Crop Recommendation</h2>
+      <p id="crop-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Yield Prediction -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="yield" class="text-xl font-semibold text-green-600 mb-2">📈 Yield Prediction</h2>
+      <p id="yield-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Fertilizer Advice -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="fertilizer" class="text-xl font-semibold text-green-600 mb-2">🌾 Fertilizer Recommendation</h2>
+      <p id="fertilizer-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Pest & Disease Detection -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="pest" class="text-xl font-semibold text-green-600 mb-2">🐛 Pest & Disease Detection</h2>
+      <p id="pest-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Harvest Planning -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="harvest" class="text-xl font-semibold text-green-600 mb-2">🚜 Harvest Planning</h2>
+      <p id="harvest-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Financial Planning -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="finance" class="text-xl font-semibold text-green-600 mb-2">💰 Financial Planning</h2>
+      <p id="finance-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Weather Advisory -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="weather" class="text-xl font-semibold text-green-600 mb-2">🌦️ Weather Forecast & Advice</h2>
+      <p id="weather-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Genetic Modification Advice -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="gm" class="text-xl font-semibold text-green-600 mb-2">🧬 Genetically Modified Crop Advice</h2>
+      <p id="gm-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Market Strategy -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="market" class="text-xl font-semibold text-green-600 mb-2">🛒 Market Crop Strategy</h2>
+      <p id="market-description" class="text-gray-700"></p>
+    </div>
+
+    <!-- Irrigation Optimization -->
+    <div class="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition">
+      <h2 id="irrigation" class="text-xl font-semibold text-green-600 mb-2">💧 Irrigation Optimization</h2>
+      <p id="irrigation-description" class="text-gray-700"></p>
+    </div>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("language") || localStorage.getItem("lang") || "en";
+    localStorage.setItem("lang", lang);
+
+    const translations = {
+      en: {
+        title: "🌾 AgriFDSS - Smart Farming Advisory Panel",
+        subtitle: "AI-driven recommendations based on soil, weather, and field data",
+        crop: "🌱 Crop Recommendation",
+        yield: "📈 Yield Prediction",
+        fertilizer: "🌾 Fertilizer Recommendation",
+        pest: "🐛 Pest & Disease Detection",
+        harvest: "🚜 Harvest Planning",
+        finance: "💰 Financial Planning",
+        weather: "🌦️ Weather Forecast & Advice",
+        gm: "🧬 Genetically Modified Crop Advice",
+        market: "🛒 Market Crop Strategy",
+        irrigation: "💧 Irrigation Optimization",
+        crop_description: "Best crop: <strong>Maize</strong><br>Based on pH, weather, and soil composition.",
+        yield_description: "Expected yield: <strong>4.5 tons/hectare</strong><br>Apply nitrogen-rich fertilizer.",
+        fertilizer_description: "Use: <strong>NPK 20-20-20</strong><br>Apply 2kg/acre after 10 days of sowing.",
+        pest_description: "Detected: <strong>Leaf Blight</strong><br>Spray neem extract every 5 days.",
+        harvest_description: "Ideal time: <strong>95 days</strong><br>Check forecast before scheduling.",
+        finance_description: "Cost: ₹18,000 | Return: ₹35,000<br><strong>ROI: 94%</strong>",
+        weather_description: "Rainfall: <strong>12 mm</strong> expected in 3 days.<br>Postpone irrigation.",
+        gm_description: "Recommended: <strong>GM Maize A56</strong><br>High resistance & yield.",
+        market_description: "Sell maize in <strong>Chennai mandi</strong> during November for best price.",
+        irrigation_description: "Recommended every <strong>7 days</strong> based on soil moisture sensors."
+      },
+      hi: {
+        title: "🌾 AgriFDSS - स्मार्ट खेती सलाह पैनल",
+        subtitle: "मिट्टी, मौसम और खेत डेटा के आधार पर एआई सिफारिशें",
+        crop: "🌱 फसल सिफारिश",
+        yield: "📈 उपज पूर्वानुमान",
+        fertilizer: "🌾 उर्वरक सिफारिश",
+        pest: "🐛 कीट और रोग पहचान",
+        harvest: "🚜 कटाई योजना",
+        finance: "💰 वित्तीय योजना",
+        weather: "🌦️ मौसम पूर्वानुमान और सलाह",
+        gm: "🧬 आनुवंशिक रूप से परिवर्तित फसल सलाह",
+        market: "🛒 बाजार फसल रणनीति",
+        irrigation: "💧 सिंचाई अनुकूलन",
+        crop_description: "सर्वोत्तम फसल: <strong>मक्का</strong><br>pH, मौसम, और मिट्टी के मिश्रण के आधार पर।",
+        yield_description: "अपेक्षित उपज: <strong>4.5 टन/हेक्टेयर</strong><br>नाइट्रोजन-समृद्ध उर्वरक लागू करें।",
+        fertilizer_description: "उपयोग करें: <strong>NPK 20-20-20</strong><br>बोने के 10 दिन बाद 2 किलो/एकड़ लागू करें।",
+        pest_description: "पाया गया: <strong>पत्तियों की जलन</strong><br>हर 5 दिन में नीम का अर्क छिड़कें।",
+        harvest_description: "आदर्श समय: <strong>95 दिन</strong><br>समय निर्धारित करने से पहले पूर्वानुमान की जांच करें।",
+        finance_description: "लागत: ₹18,000 | लाभ: ₹35,000<br><strong>ROI: 94%</strong>",
+        weather_description: "वर्षा: <strong>12 मिमी</strong> अगले 3 दिनों में।<br>सिंचाई स्थगित करें।",
+        gm_description: "सुझावित: <strong>GM मक्का A56</strong><br>उच्च प्रतिरोध और उपज।",
+        market_description: "मक्का <strong>चेन्नई मंडी</strong> में नवंबर में बेचे, सर्वोत्तम मूल्य के लिए।",
+        irrigation_description: "मिट्टी के नमी सेंसर के आधार पर हर <strong>7 दिन</strong> में अनुशंसित।"
+      },
+      mr: {
+        title: "🌾 AgriFDSS - स्मार्ट शेती सल्ला पॅनेल",
+        subtitle: "माती, हवामान आणि क्षेत्र डेटा आधारित एआय शिफारसी",
+        crop: "🌱 पिक शिफारस",
+        yield: "📈 उत्पादन अंदाज",
+        fertilizer: "🌾 खत शिफारस",
+        pest: "🐛 कीड आणि रोग ओळख",
+        harvest: "🚜 कापणी योजना",
+        finance: "💰 आर्थिक योजना",
+        weather: "🌦️ हवामान अंदाज आणि सल्ला",
+        gm: "🧬 आनुवंशिकदृष्ट्या बदललेली पिक शिफारस",
+        market: "🛒 बाजारातील पीक धोरण",
+        irrigation: "💧 सिंचन अनुकूलन",
+        crop_description: "सर्वोत्तम पीक: <strong>मका</strong><br>pH, हवामान, आणि मातीच्या मिश्रणावर आधारित.",
+        yield_description: "अपेक्षित उत्पादन: <strong>4.5 टन/हेक्टेअर</strong><br>नायट्रोजन-समृद्ध खत वापरा.",
+        fertilizer_description: "वापरा: <strong>NPK 20-20-20</strong><br>पेरणीच्या 10 दिवसांनंतर 2 किलो/एकर वापरा.",
+        pest_description: "शोधले: <strong>पानांची भाजणी</strong><br>प्रत्येक 5 दिवसांनी नीम अर्क छिड़कावा.",
+        harvest_description: "आदर्श वेळ: <strong>95 दिवस</strong><br>शेड्यूल ठरवण्यापूर्वी अंदाज तपासा.",
+        finance_description: "खर्च: ₹18,000 | नफा: ₹35,000<br><strong>ROI: 94%</strong>",
+        weather_description: "पर्जन्य: <strong>12 मिमी</strong> 3 दिवसांत.<br>सिंचन स्थगित करा.",
+        gm_description: "सुझवले: <strong>GM मका A56</strong><br>उच्च प्रतिकार आणि उत्पादन.",
+        market_description: "मका <strong>चेन्नई मंडी</strong> मध्ये नोव्हेंबर मध्ये विकावा, सर्वोत्तम किमतीसाठी.",
+        irrigation_description: "मातीच्या आर्द्रता सेन्सरच्या आधारे प्रत्येक <strong>7 दिवस</strong> मध्ये शिफारस."
+      }
+    };
+
+    const langTranslations = translations[lang];
+
+    // Set the text content dynamically based on the selected language
+    document.getElementById("title").textContent = langTranslations.title;
+    document.getElementById("subtitle").textContent = langTranslations.subtitle;
+    document.getElementById("crop").textContent = langTranslations.crop;
+    document.getElementById("yield").textContent = langTranslations.yield;
+    document.getElementById("fertilizer").textContent = langTranslations.fertilizer;
+    document.getElementById("pest").textContent = langTranslations.pest;
+    document.getElementById("harvest").textContent = langTranslations.harvest;
+    document.getElementById("finance").textContent = langTranslations.finance;
+    document.getElementById("weather").textContent = langTranslations.weather;
+    document.getElementById("gm").textContent = langTranslations.gm;
+    document.getElementById("market").textContent = langTranslations.market;
+    document.getElementById("irrigation").textContent = langTranslations.irrigation;
+    
+    document.getElementById("crop-description").innerHTML = langTranslations.crop_description;
+    document.getElementById("yield-description").innerHTML = langTranslations.yield_description;
+    document.getElementById("fertilizer-description").innerHTML = langTranslations.fertilizer_description;
+    document.getElementById("pest-description").innerHTML = langTranslations.pest_description;
+    document.getElementById("harvest-description").innerHTML = langTranslations.harvest_description;
+    document.getElementById("finance-description").innerHTML = langTranslations.finance_description;
+    document.getElementById("weather-description").innerHTML = langTranslations.weather_description;
+    document.getElementById("gm-description").innerHTML = langTranslations.gm_description;
+    document.getElementById("market-description").innerHTML = langTranslations.market_description;
+    document.getElementById("irrigation-description").innerHTML = langTranslations.irrigation_description;
+  </script>
+
+</body>
+</html>
+
+
+
+
+

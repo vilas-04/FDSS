@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AgriFDSS - Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="index-page">
+  <div class="container">
+    <h1 id="title">AgriFDSS - Sign Up</h1>
+
+    <!-- Language Selector -->
+    <label for="language" id="label-language">Choose Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
+
+    <!-- Signup Form -->
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" id="submit-btn">Sign Up</button>
+    </form>
+
+    <p id="login-link-text">
+      Already have an account? <a href="login.html" id="login-link">Login here</a>
+    </p>
+  </div>
+
+  <script>
+    // Language persistence
+    const langSelect = document.getElementById("language");
+    const params = new URLSearchParams(window.location.search);
+    const selectedLang = params.get("language") || localStorage.getItem("lang") || "en";
+    langSelect.value = selectedLang;
+    localStorage.setItem("lang", selectedLang);
+
+    // Translations
+    const translations = {
+      en: {
+        title: "AgriFDSS - Sign Up",
+        name: "Full Name",
+        email: "Email",
+        password: "Password",
+        submit: "Sign Up",
+        loginText: "Already have an account?",
+        loginLink: "Login here",
+        language: "Choose Language:"
+      },
+      hi: {
+        title: "AgriFDSS - साइन अप करें",
+        name: "पूरा नाम",
+        email: "ईमेल",
+        password: "पासवर्ड",
+        submit: "साइन अप करें",
+        loginText: "पहले से खाता है?",
+        loginLink: "लॉगिन करें",
+        language: "भाषा चुनें:"
+      },
+      mr: {
+        title: "AgriFDSS - साइन अप करा",
+        name: "पूर्ण नाव",
+        email: "ईमेल",
+        password: "पासवर्ड",
+        submit: "साइन अप करा",
+        loginText: "आधीच खाते आहे?",
+        loginLink: "लॉगिन करा",
+        language: "भाषा निवडा:"
+      }
+    };
+
+    function translate(lang) {
+      const t = translations[lang];
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("name").placeholder = t.name;
+      document.getElementById("email").placeholder = t.email;
+      document.getElementById("password").placeholder = t.password;
+      document.getElementById("submit-btn").innerText = t.submit;
+      document.getElementById("login-link-text").childNodes[0].nodeValue = t.loginText + " ";
+      document.getElementById("login-link").innerText = t.loginLink;
+      document.getElementById("label-language").innerText = t.language;
+    }
+
+    // Initialize translation
+    translate(selectedLang);
+
+    // On language change
+    langSelect.addEventListener("change", function () {
+      const newLang = this.value;
+      localStorage.setItem("lang", newLang);
+      translate(newLang);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+  <script>
+    // Initialize Supabase client
+    const supabaseUrl = 'YOUR_SUPABASE_URL';
+    const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Handle form submission
+    const signupForm = document.getElementById("signup-form");
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Get form data
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Create a new user in Supabase
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password
+      });
+
+      if (error) {
+        alert("Error: " + error.message);
+      } else {
+        // Optionally, you can insert user details into a "users" table
+        const { user, error: insertError } = await supabase
+          .from('users')
+          .insert([{ name: name, email: email }]);
+
+        if (insertError) {
+          alert("Error inserting user data: " + insertError.message);
+        } else {
+          // Redirect to login page or dashboard after successful sign-up
+          window.location.href = "login.html";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

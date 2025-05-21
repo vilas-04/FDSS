@@ -1,0 +1,134 @@
+/* ========== Global Reset and Base Styling ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========== Page Backgrounds (Use corresponding body class) ========== */
+.index-page {
+  background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2EwMDkta2Fib29tcGljcy0wODMzLmpwZw.jpg'); /* replace with a real agriculture background */
+}
+
+.advisory-page {
+  background-image: url('https://wallpaperbat.com/img/338889-farmer-wallpaper-top-free-farmer-background.jpg'); /* farmer or advisory theme */
+}
+
+.home-page {
+  background-image: url('https://images.pexels.com/photos/708798/pexels-photo-708798.jpeg?cs=srgb&dl=pexels-chiecharon-708798.jpg&fm=jpg'); /* farm/agritech view */
+}
+
+.login-page {
+  background-image: url('https://cdn.pixabay.com/photo/2022/05/05/23/12/agriculture-7177221_640.jpg'); /* security/technology login background */
+}
+
+/* ========== Container Card ========== */
+.container {
+  background-color: rgba(254, 205, 173, 0.9);
+  padding: 30px;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* ========== Form Elements ========== */
+input, select, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #063611;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+a {
+  color: #4613a5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========== Advisory Form Section ========== */
+.form-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-section .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2e7d32;
+}
+
+@media (max-width: 600px) {
+  .form-section {
+    padding: 20px;
+  }
+
+  .submit-button {
+    font-size: 0.95rem;
+  }
+}
+
+  
